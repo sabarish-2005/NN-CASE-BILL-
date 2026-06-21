@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  body { font-family: 'Inter', system-ui, sans-serif; }
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { @apply bg-transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-brand-700 rounded-full; }
+  input, select, textarea { @apply outline-none; }
+}
+
+@layer components {
+  .btn       { @apply inline-flex items-center gap-2 px-4 py-2 rounded font-semibold text-sm transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-brand-900 border border-gold-400 text-gold-400 hover:bg-brand-800; }
+  .btn-gold  { @apply btn bg-gradient-to-r from-gold-500 to-gold-400 text-brand-900 font-bold hover:shadow-lg hover:shadow-gold-500/30; }
+  .btn-ghost { @apply btn bg-transparent border border-gray-200 dark:border-brand-700 text-gray-700 dark:text-gray-300 hover:border-gold-400; }
+  .btn-danger { @apply btn bg-red-50 border border-red-200 text-red-600 hover:bg-red-100 dark:bg-red-950 dark:border-red-800 dark:text-red-400; }
+  .btn-sm    { @apply !px-3 !py-1.5 !text-xs; }
+  .btn-lg    { @apply !px-6 !py-3 !text-base; }
+  .btn-icon  { @apply btn !p-2 !rounded; }
+
+  .card      { @apply bg-white dark:bg-brand-900 border border-gray-200 dark:border-brand-700 rounded-lg shadow-sm; }
+  .card-header { @apply px-4 py-2.5 bg-brand-900 dark:bg-brand-950 text-gold-400 text-xs font-black tracking-widest uppercase border-b-2 border-gold-500 rounded-t-lg flex items-center gap-2; }
+  .card-body { @apply p-4; }
+
+  .inp       { @apply w-full px-3 py-2 bg-white dark:bg-brand-800 border-1.5 border-gray-200 dark:border-brand-600 text-gray-900 dark:text-gray-100 rounded text-sm transition-colors focus:border-gold-400 focus:ring-1 focus:ring-gold-400/30; }
+  .inp-sm    { @apply !px-2 !py-1.5 !text-xs; }
+  .label     { @apply block text-xs font-bold text-brand-600 dark:text-brand-300 tracking-wide uppercase mb-1; }
+  .field     { @apply mb-3; }
+
+  .badge     { @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-bold border; }
+  .tbl-head  { @apply bg-brand-900 text-gold-400 text-xs font-black tracking-wider; }
+  .tbl-cell  { @apply px-3 py-2.5 border-b border-gray-100 dark:border-brand-700 text-sm; }
+  .tbl-row   { @apply hover:bg-brand-50 dark:hover:bg-brand-800/50 transition-colors; }
+
+  .stat-card { @apply card p-4 border-l-4; }
+  .sidebar-btn { @apply flex items-center gap-2.5 w-full px-3 py-2.5 rounded text-sm font-medium transition-all text-gray-400 hover:text-white hover:bg-white/5; }
+  .sidebar-btn.active { @apply bg-gradient-to-r from-gold-500 to-gold-400 text-brand-900 font-bold shadow-md; }
+}
+
+@layer utilities {
+  .border-1\.5 { border-width: 1.5px; }
+  .text-balance { overflow-wrap: anywhere; }
+}
+
+/* Print styles */
+@media print {
+  body > *:not(#print-portal) { display: none !important; }
+  #print-portal { display: block !important; }
+  @page { size: A4 portrait; margin: 6mm; }
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+#print-portal { display: none; }

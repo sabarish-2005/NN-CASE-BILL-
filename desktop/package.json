@@ -1,0 +1,44 @@
+{
+  "name": "nn-billing-desktop",
+  "version": "1.0.0",
+  "description": "NN Billing Desktop App",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.1.2",
+    "electron-serve": "^3.0.1",
+    "electron-store": "^8.2.0",
+    "puppeteer-core": "^22.12.1"
+  },
+  "devDependencies": {
+    "electron": "31.1.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.nnbilling.desktop",
+    "productName": "NN Billing",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "app-build/**/*",
+      "main.js",
+      "preload.js",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
